@@ -1,0 +1,19 @@
+# gitleaks 設定ファイル
+# https://github.com/gitleaks/gitleaks#configuration
+
+title = "gitleaks config"
+
+# デフォルトルールを継承
+[extend]
+useDefault = true
+
+# 検出から除外するパス
+[allowlist]
+description = "false positive を許可するパス"
+paths = [
+  '''\.env\.example$''',
+  '''package-lock\.json$''',
+  '''pnpm-lock\.yaml$''',
+  '''yarn\.lock$''',
+  '''docs/.*\.md$''',
+]

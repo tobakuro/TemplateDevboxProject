@@ -1,0 +1,64 @@
+name: 🐛 バグ報告
+description: 不具合・バグを報告する
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        バグ報告ありがとうございます!以下の項目を埋めてください。
+
+  - type: textarea
+    id: description
+    attributes:
+      label: バグの概要
+      description: どのような不具合が発生していますか?
+      placeholder: 例) ログインボタンを押すと500エラーが返ってくる
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 再現手順
+      description: バグを再現するための手順を箇条書きで記載してください
+      placeholder: |
+        1. ホーム画面を開く
+        2. 「ログイン」ボタンを押す
+        3. エラーが表示される
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待される挙動
+      description: 本来どう動くべきでしたか?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 実際の挙動
+      description: 実際にはどう動きましたか?(エラーメッセージ・スクショなど)
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 環境
+      description: OS / ブラウザ / Node.jsバージョン など
+      placeholder: |
+        - OS: Windows 11 + WSL2 (Ubuntu 22.04)
+        - ブラウザ: Chrome 120
+        - Devbox: 0.13.7
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 補足
+      description: その他、関連情報があれば記載してください

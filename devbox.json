@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
+  "packages": [
+    "git@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo '🚀 Devbox shell に入りました'",
+      "echo '📖 セットアップ手順は docs/1_setup_devbox.md を参照'",
+      "echo '📖 サーバー起動手順は docs/2_setup.md を参照'",
+      "echo '📖 よく使うコマンドは docs/commands.md を参照'"
+    ],
+    "scripts": {
+      "setup": [
+        "echo '【TODO】依存インストールコマンドをここに記載 (例: pnpm install)'"
+      ],
+      "dev": [
+        "echo '【TODO】開発サーバー起動コマンドをここに記載'"
+      ],
+      "build": [
+        "echo '【TODO】ビルドコマンドをここに記載'"
+      ],
+      "test": [
+        "echo '【TODO】テストコマンドをここに記載 (例: pnpm test --coverage)'"
+      ],
+      "lint": [
+        "echo '【TODO】lintコマンドをここに記載 (例: pnpm lint)'"
+      ],
+      "lint:fix": [
+        "echo '【TODO】lint自動修正コマンドをここに記載'"
+      ],
+      "format": [
+        "echo '【TODO】formatコマンドをここに記載 (例: pnpm prettier --write .)'"
+      ],
+      "format:check": [
+        "echo '【TODO】formatチェックコマンドをここに記載 (例: pnpm prettier --check .)'"
+      ],
+      "typecheck": [
+        "echo '【TODO】型チェックコマンドをここに記載 (例: pnpm tsc --noEmit)'"
+      ]
+    }
+  },
+  "env": {
+    "PROJECT_ROOT": "$PWD"
+  }
+}

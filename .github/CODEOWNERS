@@ -1,0 +1,29 @@
+# CODEOWNERS
+# https://docs.github.com/en/repositories/managing-your-repositories-settings-and-customizations/customizing-your-repository/about-code-owners
+#
+# このファイルでは、ディレクトリごとのコードオーナーを指定します。
+# PR作成時に該当ディレクトリのオーナーが自動でレビュアーにアサインされます。
+#
+# 形式: <パスパターン> <ユーザー名 or チーム名>
+
+# デフォルト (どのディレクトリにも該当しないファイル)
+*       @tobakuro
+
+# ----------------------------------------------------------------
+# 以下、プロジェクトの構成に合わせて編集してください
+# ----------------------------------------------------------------
+
+# ドキュメント
+/docs/                  @tobakuro
+
+# CI/CD
+/.github/               @tobakuro
+
+# フロントエンド (例)
+# /frontend/            @frontend-team
+
+# バックエンド (例)
+# /backend/             @backend-team
+
+# インフラ (例)
+# /infra/               @infra-team

@@ -1,0 +1,34 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Devbox
+        uses: jetify-com/devbox-install-action@v0.13.0
+        with:
+          enable-cache: true
+
+      # ----------------------------------------------------------------
+      # 以下、プロジェクトに合わせてデプロイコマンドを記載してください
+      # 例: Vercel / Cloudflare Workers / AWS / GCP / Firebase など
+      # ----------------------------------------------------------------
+
+      - name: Build for production
+        run: devbox run -- echo "production build command here"
+
+      - name: Deploy
+        run: devbox run -- echo "deploy command here"

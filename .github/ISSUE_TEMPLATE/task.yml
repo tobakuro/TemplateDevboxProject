@@ -1,0 +1,35 @@
+name: 📝 タスク
+description: 開発タスク・作業項目
+title: "[Task]: "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        タスクの内容を以下に記載してください。
+
+  - type: textarea
+    id: description
+    attributes:
+      label: タスク概要
+      description: 何をするタスクですか?
+    validations:
+      required: true
+
+  - type: textarea
+    id: todo
+    attributes:
+      label: TODOリスト
+      description: 完了条件をチェックリスト形式で記載してください
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: メモ・補足
+      description: 関連Issue・参考リンクなど

@@ -1,0 +1,41 @@
+name: Mark Stale Issues and PRs
+
+on:
+  schedule:
+    - cron: "0 1 * * *" # 毎日 朝10時 (JST)
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          # Issue
+          days-before-issue-stale: 60
+          days-before-issue-close: 14
+          stale-issue-label: "stale"
+          stale-issue-message: |
+            このissueは60日間活動がないためstaleとマークされました。
+            まだ対応が必要な場合はコメントしてください。
+            14日後に自動クローズされます。
+          close-issue-message: |
+            活動がなかったため自動クローズされました。
+            必要に応じて再オープンしてください。
+          exempt-issue-labels: "pinned,security,good first issue"
+
+          # PR
+          days-before-pr-stale: 30
+          days-before-pr-close: 14
+          stale-pr-label: "stale"
+          stale-pr-message: |
+            このPRは30日間活動がないためstaleとマークされました。
+            14日後に自動クローズされます。
+          close-pr-message: |
+            活動がなかったため自動クローズされました。
+            必要に応じて再オープンしてください。
+          exempt-pr-labels: "pinned,security,wip"

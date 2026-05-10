@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+# 同じブランチで連続push時は古い実行をキャンセル
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ----------------------------------------------------------------
+  # Lint: コーディング規約チェック (ESLint / Ruff / golangci-lint など)
+  # ----------------------------------------------------------------
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Devbox
+        uses: jetify-com/devbox-install-action@v0.13.0
+        with:
+          enable-cache: true
+      - name: Run lint
+        run: devbox run lint
+
+  # ----------------------------------------------------------------
+  # Format: フォーマッタチェック (Prettier / Black / gofmt など)
+  # ----------------------------------------------------------------
+  format:
+    name: Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Devbox
+        uses: jetify-com/devbox-install-action@v0.13.0
+        with:
+          enable-cache: true
+      - name: Check format
+        run: devbox run format:check
+
+  # ----------------------------------------------------------------
+  # Type Check: 型チェック (tsc / mypy など。型なし言語はskip)
+  # ----------------------------------------------------------------
+  typecheck:
+    name: Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Devbox
+        uses: jetify-com/devbox-install-action@v0.13.0
+        with:
+          enable-cache: true
+      - name: Run typecheck
+        run: devbox run typecheck
+
+  # ----------------------------------------------------------------
+  # Test: 単体・結合テスト + カバレッジ
+  # ----------------------------------------------------------------
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Devbox
+        uses: jetify-com/devbox-install-action@v0.13.0
+        with:
+          enable-cache: true
+      - name: Run tests
+        run: devbox run test
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/
+          if-no-files-found: ignore
+
+  # ----------------------------------------------------------------
+  # Build: ビルドが通ることを確認
+  # ----------------------------------------------------------------
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [lint, format, typecheck, test]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Devbox
+        uses: jetify-com/devbox-install-action@v0.13.0
+        with:
+          enable-cache: true
+      - name: Run build
+        run: devbox run build

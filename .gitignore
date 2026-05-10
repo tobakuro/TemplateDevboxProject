@@ -1,0 +1,54 @@
+# Devbox
+.devbox/
+devbox.lock
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+
+# Java
+*.class
+target/
+.gradle/
+build/
+
+# 環境変数
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# エディタ
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# ログ
+logs/
+*.log
+
+# ビルド成果物
+dist/
+out/
+.next/
+.nuxt/
+.cache/
+coverage/

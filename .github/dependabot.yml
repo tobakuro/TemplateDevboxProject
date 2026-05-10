@@ -1,0 +1,69 @@
+# Dependabot config
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+#
+# プロジェクトで使用するエコシステムのみ有効化してください。
+# 不要なものはコメントアウトまたは削除推奨。
+
+version: 2
+updates:
+  # ----------------------------------------------------------------
+  # GitHub Actions (常に有効化推奨)
+  # ----------------------------------------------------------------
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+  # ----------------------------------------------------------------
+  # npm / pnpm / yarn (Node.jsプロジェクトの場合)
+  # ----------------------------------------------------------------
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "npm"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      # 開発依存はまとめてPR
+      dev-dependencies:
+        dependency-type: "development"
+      # マイナー/パッチアップデートはまとめる
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # ----------------------------------------------------------------
+  # Python (使う場合のみコメント解除)
+  # ----------------------------------------------------------------
+  # - package-ecosystem: "pip"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #   labels:
+  #     - "dependencies"
+  #     - "python"
+
+  # ----------------------------------------------------------------
+  # Docker (使う場合のみコメント解除)
+  # ----------------------------------------------------------------
+  # - package-ecosystem: "docker"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #   labels:
+  #     - "dependencies"
+  #     - "docker"

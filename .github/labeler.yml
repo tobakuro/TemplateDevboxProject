@@ -1,0 +1,62 @@
+# actions/labeler の設定ファイル
+# 変更されたファイルのパスに基づいて自動でラベル付け
+# https://github.com/actions/labeler
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**"
+          - "**/*.md"
+          - "README*"
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "package.json"
+          - "package-lock.json"
+          - "pnpm-lock.yaml"
+          - "yarn.lock"
+          - "requirements.txt"
+          - "Pipfile"
+          - "Pipfile.lock"
+          - "poetry.lock"
+          - "go.mod"
+          - "go.sum"
+          - "Cargo.toml"
+          - "Cargo.lock"
+          - "devbox.json"
+          - "devbox.lock"
+
+ci/cd:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/workflows/**"
+          - ".github/dependabot.yml"
+          - ".github/labeler.yml"
+
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".gitignore"
+          - ".editorconfig"
+          - ".gitleaks.toml"
+          - "tsconfig*.json"
+          - "vite.config.*"
+          - "webpack.config.*"
+          - "next.config.*"
+
+# ----------------------------------------------------------------
+# プロジェクト固有のラベルはここから下に追記
+# ----------------------------------------------------------------
+
+# frontend:
+#   - changed-files:
+#       - any-glob-to-any-file:
+#           - "frontend/**"
+#           - "src/components/**"
+
+# backend:
+#   - changed-files:
+#       - any-glob-to-any-file:
+#           - "backend/**"
+#           - "api/**"

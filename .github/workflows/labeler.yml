@@ -1,0 +1,74 @@
+name: Labeler
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  # 変更ファイルのパスベースでラベル付与
+  path-based:
+    name: Path-based Labels
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/labeler.yml
+
+  # ブランチ名のプレフィックスからラベル付与
+  branch-based:
+    name: Branch-based Labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add label by branch name
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = context.payload.pull_request.head.ref;
+            const labelMap = {
+              'feature/': 'enhancement',
+              'feat/':    'enhancement',
+              'fix/':     'bug',
+              'bugfix/':  'bug',
+              'hotfix/':  'bug',
+              'docs/':    'documentation',
+              'refactor/':'refactor',
+              'chore/':   'chore',
+              'test/':    'test',
+              'perf/':    'performance',
+            };
+            const labels = Object.entries(labelMap)
+              .filter(([prefix]) => branch.startsWith(prefix))
+              .map(([, label]) => label);
+
+            if (labels.length === 0) return;
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              labels,
+            });
+
+  # PRのサイズ(行数)に応じてサイズラベル付与
+  size:
+    name: Size Label
+    runs-on: ubuntu-latest
+    steps:
+      - uses: codelytv/pr-size-labeler@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          xs_label: "size/XS"
+          xs_max_size: "10"
+          s_label: "size/S"
+          s_max_size: "100"
+          m_label: "size/M"
+          m_max_size: "300"
+          l_label: "size/L"
+          l_max_size: "500"
+          xl_label: "size/XL"
+          message_if_xl: "⚠️ このPRは500行を超えています。レビュー負荷軽減のため、可能であれば分割を検討してください。"

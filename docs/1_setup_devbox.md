@@ -205,9 +205,7 @@ devbox shell
 
 ```
 🚀 Devbox shell に入りました
-📖 セットアップ手順は docs/1_setup_devbox.md を参照してください
-📖 サーバー起動手順は docs/2_setup.md を参照してください
-📖 よく使うコマンドは docs/commands.md を参照してください
+📖 よく使うコマンド, サーバー起動手順は docs/commands.md を参照
 ```
 
 ---

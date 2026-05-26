@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        機能提案ありがとうございます!以下の項目を埋めてください。
+        以下の項目を埋めてください。
 
   - type: textarea
     id: summary

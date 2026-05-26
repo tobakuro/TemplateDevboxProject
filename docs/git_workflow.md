@@ -29,8 +29,8 @@
 ### 命名ルール
 
 ```
-<type>/<issue番号>-<簡潔な説明>
-例: feature/12-user-login
+<type>/<issue番号>/<簡潔な説明>
+例: feat/12/user-login
 ```
 
 ---
@@ -83,12 +83,12 @@ fix: API呼び出し時のNull参照エラーを修正
 2. develop から feat ブランチを切る
    git checkout develop
    git pull
-   git checkout -b feat/12-xxx
+   git checkout -b feat/12/xxx
    ↓
 3. 開発・コミット
    ↓
 4. リモートへpush
-   git push -u origin feat/12-xxx
+   git push -u origin feat/12/xxx
    ↓
 5. PRを作成 (develop向け)
    ↓

@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        バグ報告ありがとうございます!以下の項目を埋めてください。
+        以下の項目を埋めてください。
 
   - type: textarea
     id: description
@@ -44,18 +44,6 @@ body:
       description: 実際にはどう動きましたか?(エラーメッセージ・スクショなど)
     validations:
       required: true
-
-  - type: textarea
-    id: environment
-    attributes:
-      label: 環境
-      description: OS / ブラウザ / Node.jsバージョン など
-      placeholder: |
-        - OS: Windows 11 + WSL2 (Ubuntu 22.04)
-        - ブラウザ: Chrome 120
-        - Devbox: 0.13.7
-    validations:
-      required: false
 
   - type: textarea
     id: additional

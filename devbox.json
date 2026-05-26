@@ -1,14 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
   "packages": [
-    "git@latest"
+    "git@latest",
+    "gh@latest"
   ],
   "shell": {
     "init_hook": [
       "echo '🚀 Devbox shell に入りました'",
-      "echo '📖 セットアップ手順は docs/1_setup_devbox.md を参照'",
-      "echo '📖 サーバー起動手順は docs/2_setup.md を参照'",
-      "echo '📖 よく使うコマンドは docs/commands.md を参照'"
+      "echo '📖 よく使うコマンド, サーバー起動手順は docs/commands.md を参照'"
     ],
     "scripts": {
       "setup": [

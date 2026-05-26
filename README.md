@@ -69,6 +69,7 @@ GitHub上で「**Use this template**」ボタンから新規リポジトリを�
 ### 開発者向け
 | ファイル | 内容 |
 |---|---|
+| [0_setup_owner.md](./docs/0_setup_owner.md) | オーナー向け: テンプレ取得〜チーム共有まで |
 | [1_setup_devbox.md](./docs/1_setup_devbox.md) | WSL〜Devbox shellまで |
 | [2_setup.md](./docs/2_setup.md) | プロジェクト固有のセットアップ |
 | [commands.md](./docs/commands.md) | よく使うコマンド集 |

@@ -33,6 +33,10 @@ build/
 .DS_Store
 Thumbs.db
 
+# Windows: ZIPダウンロード/展開時に付与されるMOTW (Mark of the Web) の残骸
+*:Zone.Identifier
+*Zone.Identifier
+
 # エディタ
 .vscode/*
 !.vscode/settings.json

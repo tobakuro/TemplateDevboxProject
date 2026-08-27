@@ -7,7 +7,8 @@
   "shell": {
     "init_hook": [
       "echo '🚀 Devbox shell に入りました'",
-      "echo '📖 よく使うコマンド, サーバー起動手順は docs/commands.md を参照'"
+      "echo '📖 よく使うコマンド, サーバー起動手順は docs/commands.md を参照'",
+      "find \"$PWD\" -name '*Zone.Identifier' -type f -print -delete 2>/dev/null | grep -q . && echo '🧹 Zone.Identifier ファイルを削除しました' || true"
     ],
     "scripts": {
       "setup": [

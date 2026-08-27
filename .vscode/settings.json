@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    "**/*:Zone.Identifier": true,
+    "**/*Zone.Identifier": true
+  },
+  "search.exclude": {
+    "**/*:Zone.Identifier": true,
+    "**/*Zone.Identifier": true
+  },
+  "files.watcherExclude": {
+    "**/*:Zone.Identifier": true,
+    "**/*Zone.Identifier": true
+  }
+}
